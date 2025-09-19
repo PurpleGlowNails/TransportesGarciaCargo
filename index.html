@@ -674,6 +674,17 @@
       animation: fadeInUp 1s ease-out forwards;
     }
     
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(100%); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideOutRight {
+      from { opacity: 1; transform: translateX(0); }
+      to { opacity: 0; transform: translateX(100%); }
+    }
+    
     /* Utilidades */
     .text-gradient {
       background: linear-gradient(45deg, #fdcb6e, #e17055);
@@ -890,7 +901,7 @@
     <div class="contact-info">
       <div class="contact-info-item">
         <i class="fas fa-phone"></i>
-        <strong>Teléfono:</strong> +57 320 205 28 30
+        <strong>Teléfono:</strong> +57 311 851 21 90
       </div>
       <div class="contact-info-item">
         <i class="fas fa-envelope"></i>
@@ -912,7 +923,7 @@
 
     <!-- Redes Sociales con Iconos Originales -->
     <div class="social-buttons">
-      <button class="social-btn whatsapp" onclick="window.open('https://wa.me/573202052830?text=Hola%20García%20Cargo,%20quiero%20cotizar%20un%20servicio%20de%20transporte', '_blank')" aria-label="WhatsApp">
+      <button class="social-btn whatsapp" onclick="contactoWhatsApp('general')" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
       </button>
       <button class="social-btn email" onclick="window.location.href='mailto:contacto@garciacargo.com?subject=Cotización%20Transporte%20García%20Cargo&body=Hola,%20estoy%20interesado%20en%20sus%20servicios%20de%20transporte.'" aria-label="Email">
@@ -928,13 +939,13 @@
 
     <!-- Botones de Acción Rápida -->
     <div style="margin-top: 2rem;">
-      <a href="tel:+573202052830" class="btn">
+      <a href="tel:+573118512190" class="btn">
         <i class="fas fa-phone"></i>
         Llamar Ahora
       </a>
-      <button class="btn" onclick="solicitarCotizacionRapida()" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+      <button class="btn" onclick="contactoWhatsApp('emergencia')" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
         <i class="fas fa-rocket"></i>
-        Cotización Express
+        WhatsApp Express
       </button>
     </div>
   </section>
@@ -949,7 +960,7 @@
   </footer>
 
   <script>
-    // Función para enviar cotización
+    // Función para enviar cotización directamente por WhatsApp
     function enviarCotizacion(event) {
       event.preventDefault();
       
@@ -961,21 +972,142 @@
       const ubicacion = formData.get('ubicacion');
       const mensaje = formData.get('mensaje');
       
-      // Crear mensaje para WhatsApp
-      const whatsappMessage = `Hola García Cargo, solicito cotización:
-📝 Nombre: ${nombre}
-📞 Teléfono: ${telefono}
-📧 Email: ${email}
-🚚 Servicio: ${servicio}
-📍 Ubicación: ${ubicacion}
-💬 Detalles: ${mensaje}`;
+      // Crear mensaje profesional para WhatsApp
+      const fechaActual = new Date().toLocaleDateString('es-CO');
+      const horaActual = new Date().toLocaleTimeString('es-CO', {hour: '2-digit', minute: '2-digit'});
       
-      const whatsappUrl = `https://wa.me/573202052830?text=${encodeURIComponent(whatsappMessage)}`;
+      const whatsappMessage = `🚚 *NUEVA COTIZACIÓN - GARCÍA CARGO*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📅 *Fecha:* ${fechaActual}
+⏰ *Hora:* ${horaActual}
+
+👤 *DATOS DEL CLIENTE:*
+▫️ *Nombre:* ${nombre}
+▫️ *Teléfono:* ${telefono}
+▫️ *Email:* ${email || 'No proporcionado'}
+
+🚛 *SERVICIO SOLICITADO:*
+▫️ *Tipo:* ${servicio}
+▫️ *Ubicación:* ${ubicacion || 'No especificada'}
+
+💬 *DETALLES DEL PROYECTO:*
+${mensaje || 'Sin detalles adicionales'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Mensaje enviado desde garciacargo.com
+🕐 Responder lo antes posible`;
+
+      // NÚMERO DE WHATSAPP PARA RECIBIR COTIZACIONES
+      const numeroWhatsApp = '573118512190'; // Tu número personal
+      
+      const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(whatsappMessage)}`;
+      
+      // Abrir WhatsApp
       window.open(whatsappUrl, '_blank');
       
-      // Mostrar mensaje de confirmación
-      alert('¡Cotización enviada! Te contactaremos pronto.');
+      // Mostrar mensaje de confirmación personalizado
+      mostrarMensajeExito(nombre);
+      
+      // Limpiar formulario
       event.target.reset();
+    }
+    
+    // Función para mostrar mensaje de éxito personalizado
+    function mostrarMensajeExito(nombre) {
+      // Crear elemento de notificación
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(45deg, #27ae60, #2ecc71);
+        color: white;
+        padding: 20px 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+        z-index: 10000;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        max-width: 350px;
+        animation: slideInRight 0.5s ease-out;
+      `;
+      
+      notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
+          <div>
+            <div style="font-weight: bold; margin-bottom: 5px;">¡Cotización Enviada!</div>
+            <div style="font-size: 0.9rem; opacity: 0.9;">Hola ${nombre}, tu solicitud se envió por WhatsApp. Te contactaremos pronto.</div>
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      // Remover notificación después de 5 segundos
+      setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.5s ease-in';
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 500);
+      }, 5000);
+    }
+    
+    // Función para cotización rápida
+    function solicitarCotizacionRapida() {
+      const fechaActual = new Date().toLocaleDateString('es-CO');
+      const horaActual = new Date().toLocaleTimeString('es-CO', {hour: '2-digit', minute: '2-digit'});
+      
+      const mensaje = `🚀 *COTIZACIÓN EXPRESS - GARCÍA CARGO*
+
+📅 *Fecha:* ${fechaActual}
+⏰ *Hora:* ${horaActual}
+
+💨 *SOLICITUD URGENTE*
+Hola García Cargo, necesito una cotización express para un servicio de transporte. 
+
+Por favor contactarme lo antes posible.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Solicitud desde garciacargo.com`;
+      
+      const numeroWhatsApp = '573118512190'; // Tu número personal
+      const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+    
+    // Función para contacto directo desde botones sociales
+    function contactoWhatsApp(tipo = 'general') {
+      const fechaActual = new Date().toLocaleDateString('es-CO');
+      const horaActual = new Date().toLocaleTimeString('es-CO', {hour: '2-digit', minute: '2-digit'});
+      
+      let mensaje = '';
+      
+      switch(tipo) {
+        case 'general':
+          mensaje = `👋 *Hola García Cargo*
+
+📅 ${fechaActual} - ⏰ ${horaActual}
+
+Estoy interesado en sus servicios de transporte. ¿Podrían proporcionarme más información?
+
+Gracias.`;
+          break;
+          
+        case 'emergencia':
+          mensaje = `🚨 *SERVICIO URGENTE - GARCÍA CARGO*
+
+📅 ${fechaActual} - ⏰ ${horaActual}
+
+Necesito un servicio de transporte de forma urgente. 
+
+Por favor contactarme inmediatamente.`;
+          break;
+      }
+      
+      const numeroWhatsApp = '573118512190'; // Tu número personal
+      const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+      window.open(whatsappUrl, '_blank');
     }
     
     // Función para cotización rápida
