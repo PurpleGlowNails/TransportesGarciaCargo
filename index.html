@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transportes García Cargo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #e9e9e9 0%, #b2bec3 100%);
+      min-height: 100vh;
+    }
+    header {
+      background: #2d3436;
+      color: #fff;
+      padding: 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-left: 2rem;
+      letter-spacing: 2px;
+    }
+    nav {
+      margin-right: 2rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #fdcb6e;
+    }
+    .hero {
+      background: 
+        linear-gradient(rgba(44,62,80,0.7), rgba(44,62,80,0.4)),
+        url('https://images.unsplash.com/photo-1509228627150-74c3c2c9b1e7?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 5rem 2rem 4rem 2rem;
+      position: relative;
+    }
+    .hero::after {
+      display: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .btn, .social-btn {
+      background: #fdcb6e;
+      color: #2d3436;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: background 0.2s, color 0.2s, transform 0.18s;
+      margin: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn:hover, .social-btn:hover {
+      background: #e17055;
+      color: #fff;
+      transform: scale(1.09) translateY(-2px) rotate(-2deg);
+      box-shadow: 0 8px 24px rgba(44,62,80,0.20);
+    }
+    section.services {
+      background: #fff;
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: -3rem auto 2rem auto;
+      border-radius: 18px;
+      box-shadow: 0 4px 20px rgba(44,62,80,0.07);
+      position: relative;
+      z-index: 2;
+    }
+    section.services h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2d3436;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    .service-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 2rem;
+    }
+    .service-card {
+      background: #f1f2f6;
+      border-radius: 12px;
+      padding: 2rem 1.2rem;
+      width: 230px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(44,62,80,0.06);
+      transition: transform 0.15s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(44,62,80,0.10);
+    }
+    .service-card img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+      color: #636e72;
+    }
+    .service-card p {
+      font-size: 1rem;
+      color: #636e72;
+    }
+    /* Nueva sección: Servicios Transporte */
+    .servicios-transporte {
+      background: #fdf6e3;
+      border-radius: 18px;
+      max-width: 1100px;
+      margin: 2rem auto 2rem auto;
+      box-shadow: 0 4px 20px rgba(44,62,80,0.07);
+      padding: 2.5rem 1.5rem;
+    }
+    .servicios-transporte h2 {
+      color: #d35400;
+      margin-bottom: 1.2rem;
+      font-size: 1.7rem;
+      letter-spacing: 1px;
+      text-align: left;
+    }
+    .servicios-transporte h3 {
+      color: #2d3436;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      margin-top: 1.2rem;
+    }
+    .servicio, .modalidad {
+      margin-bottom: 1.3rem;
+      padding: 1rem 1.2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 8px rgba(44,62,80,0.04);
+    }
+    .servicio ul, .modalidad ul, .valor-agregado {
+      margin: 0.5rem 0 0.5rem 1.2rem;
+      padding-left: 1.2rem;
+      color: #636e72;
+      font-size: 1rem;
+    }
+    .valor-agregado {
+      background: #e8f6e3;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0;
+      box-shadow: 0 1px 8px rgba(44,62,80,0.04);
+    }
+    section.contact-section {
+      text-align: center;
+      padding: 2rem 1rem 2.5rem 1rem;
+      background: #fff;
+      border-radius: 18px;
+      max-width: 600px;
+      margin: 1.5rem auto 2rem auto;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+    }
+    .contact-section h2 {
+      color: #2d3436;
+      margin-bottom: 1rem;
+    }
+    .contact-section p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #636e72;
+    }
+    .contact-info {
+      background: #f1f2f6;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0 1rem 0;
+      text-align: left;
+      box-shadow: 0 2px 6px rgba(44,62,80,0.05);
+      font-size: 1.08rem;
+      color: #2d3436;
+    }
+    .contact-info strong {
+      color: #636e72;
+      display: inline-block;
+      width: 130px;
+    }
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 1.5rem 0 0.5rem 0;
+    }
+    .social-btn svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+    footer {
+      background: #636e72;
+      color: #fff;
+      text-align: center;
+      padding: 1.2rem 0;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      margin-top: 2rem;
+    }
+    @media (max-width: 900px) {
+      .service-list { flex-direction: column; align-items: center; }
+      .service-card { width: 90%; }
+      section.services, .servicios-transporte { margin: 0.5rem; padding: 2rem 0.5rem; }
+      .hero h1 { font-size: 2.1rem; }
+    }
+    @media (max-width: 700px) {
+      .contact-section { padding: 1.2rem 0.5rem; }
+      .contact-info strong { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Garcia Cargo</div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Transporte de Materiales y Escombro</h1>
+      <p>Soluciones rápidas, seguras y confiables para tu obra o proyecto. Transportamos escombro, arena, grava, tierra y más.</p>
+      <button class="btn" onclick="window.location='#servicios'">Ver Servicios</button>
+      <button class="btn" onclick="window.location='#contacto'">Cotizar Ahora</button>
+    </div>
+  </section>
+
+  <section class="services" id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="service-list">
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Escombro" />
+        <h3>Transporte de Escombro</h3>
+        <p>Retiro eficiente de escombro y residuos de construcción, con camiones de diferentes capacidades.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616487.png" alt="Arena" />
+        <h3>Entrega de Arena</h3>
+        <p>Suministro y transporte de arena fina y gruesa para todo tipo de obra.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/color/96/000000/gravel.png" alt="Grava">
+        <h3>Transporte de Grava</h3>
+        <p>Grava de diferentes tamaños y calidades, entregada directo a tu ubicación.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/color/96/000000/soil.png" alt="Tierra">
+        <h3>Transporte de Tierra</h3>
+        <p>Movemos tierra para nivelación, relleno y jardinería, con camiones adaptados.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/color/96/000000/truck.png" alt="Camiones">
+        <h3>Renta de Camiones</h3>
+        <p>Flota de camiones tipo volteo, torton y más. Servicio por viaje o por día.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integración de tu sección avanzada de servicios -->
+  <section class="servicios-transporte">
+    <h2>🚚 Servicios de Transporte y Recolección de Escombros</h2>
+
+    <article class="servicio">
+      <h3>🧱 1. Recolección de Escombros Limpios</h3>
+      <ul>
+        <li>Materiales: concreto, ladrillo, cerámica, piedra</li>
+        <li>✅ Ideal para reciclaje y reutilización</li>
+        <li>📍 Recolección directa en obra o domicilio</li>
+        <li>♻️ Opción de disposición sostenible</li>
+      </ul>
+    </article>
+
+    <article class="servicio">
+      <h3>🧩 2. Recolección de Escombros Mezclados</h3>
+      <ul>
+        <li>Materiales: mezcla de inertes con madera, plástico, metales</li>
+        <li>🔍 Clasificación previa para tratamiento adecuado</li>
+        <li>🏗️ Contenedores para obras medianas y grandes</li>
+        <li>🛠️ Separación en planta si el cliente lo requiere</li>
+      </ul>
+    </article>
+
+    <article class="servicio">
+      <h3>☣️ 3. Manejo de Escombros Contaminados</h3>
+      <ul>
+        <li>Materiales: pinturas, disolventes, amianto, residuos peligrosos</li>
+        <li>🧪 Recolección con protocolos de seguridad</li>
+        <li>🧤 Personal capacitado y certificado</li>
+        <li>🏥 Disposición en sitios autorizados</li>
+      </ul>
+    </article>
+
+    <h2>🏘️ Modalidades de Servicio</h2>
+
+    <article class="modalidad">
+      <h3>📦 Recolección Domiciliaria</h3>
+      <ul>
+        <li>Para remodelaciones pequeñas o limpiezas</li>
+        <li>🚛 Vehículos compactos para zonas residenciales</li>
+        <li>📅 Solicitud programada o express</li>
+      </ul>
+    </article>
+
+    <article class="modalidad">
+      <h3>🏗️ Recolección Industrial / Obra</h3>
+      <ul>
+        <li>Grandes volúmenes en construcción o demolición</li>
+        <li>🛻 Camiones tipo volqueta y contenedores</li>
+        <li>📍 Servicio en sitio con logística personalizada</li>
+      </ul>
+    </article>
+
+    <h2>📈 Valor Agregado</h2>
+
+    <ul class="valor-agregado">
+      <li>📲 Seguimiento en tiempo real del servicio</li>
+      <li>🧾 Facturación digital y trazabilidad</li>
+      <li>🧠 Asesoría técnica para optimizar costos y tiempos</li>
+      <li>🌱 Compromiso ambiental con prácticas sostenibles</li>
+    </ul>
+  </section>
+  <!-- Fin integración -->
+
+  <section class="contact-section" id="contacto">
+    <h2>¡Cotiza tu servicio!</h2>
+    <p>Solicita tu cotización rápida o contáctanos para más información.</p>
+    <button class="btn" onclick="window.location.href='mailto:contacto@garciacargo.com?subject=Cotización%20Transporte'">Correo Electrónico</button>
+    <button class="btn" onclick="window.open('https://wa.me/573202052830?text=Hola,%20quiero%20cotizar%20el%20transporte%20de%20materiales', '_blank')">
+      WhatsApp
+    </button>
+    <button class="btn" onclick="alert('¡Gracias por tu interés! Pronto te contactaremos.')">Solicitar Cotización</button>
+
+    <div class="contact-info">
+      <div><strong>Teléfono:</strong> 57 320 2052830</div>
+      <div><strong>Ubicación:</strong> Bogotá y Cundinamarca</div>
+      <div><strong>Horario:</strong> Atención 24 horas</div>
+    </div>
+
+    <div class="social-buttons">
+      <button class="social-btn" onclick="window.open('https://wa.me/573202052830', '_blank')" aria-label="WhatsApp">
+        <!-- WhatsApp - icono oficial -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g><path fill="#25D366" d="M16 3C9.373 3 4 8.373 4 15c0 2.53.783 4.873 2.27 6.888L4 29l7.336-2.27A11.972 11.972 0 0016 27c6.627 0 12-5.373 12-12S22.627 3 16 3Zm0 22c-2.115 0-4.162-.656-5.891-1.89l-.42-.29-4.36 1.347 1.395-4.242-.273-.43A9.944 9.944 0 016 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10Zm5.172-7.065c-.277-.139-1.634-.806-1.887-.899-.253-.093-.437-.139-.62.139-.184.277-.713.899-.874 1.084-.161.184-.322.207-.599.069-.277-.139-1.172-.432-2.234-1.377-.825-.735-1.382-1.642-1.546-1.919-.161-.277-.017-.427.122-.565.126-.125.277-.322.416-.483.139-.161.184-.277.277-.461.092-.185.046-.347-.023-.486-.069-.139-.62-1.496-.85-2.048-.224-.54-.451-.466-.62-.476l-.527-.01c-.184 0-.482.069-.736.347s-.966.945-.966 2.305c0 1.359.99 2.674 1.127 2.862.138.184 1.951 2.99 4.732 4.065.662.285 1.178.455 1.582.582.664.212 1.268.182 1.745.111.532-.079 1.634-.667 1.865-1.311.23-.644.23-1.196.161-1.311-.069-.115-.253-.184-.53-.323Z"/></g></svg>
+      </button>
+      <button class="social-btn" onclick="window.open('https://facebook.com/', '_blank')" aria-label="Facebook">
+        <!-- Facebook - icono oficial -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="#1877F3" d="M16 2C8.268 2 2 8.268 2 16c0 7.012 5.158 12.818 11.785 13.813V20.59h-3.548v-4.59h3.548v-3.5c0-3.51 2.145-5.438 5.322-5.438 1.543 0 3.155.277 3.155.277v3.467h-1.777c-1.752 0-2.298 1.088-2.298 2.205v2.989h3.91l-.625 4.59h-3.285v9.223C26.842 28.818 32 23.012 32 16c0-7.732-6.268-14-14-14Z"/><path fill="#fff" d="M22.09 24.18l.625-4.59h-3.91v-2.989c0-1.117.546-2.205 2.298-2.205h1.777v-3.467s-1.612-.277-3.155-.277c-3.177 0-5.322 1.928-5.322 5.438v3.5h-3.548v4.59h3.548v9.223C5.158 28.818 1 23.012 1 16c0-7.732 6.268-14 14-14s14 6.268 14 14c0 7.012-5.158 12.818-11.785 13.813V24.18h3.285Z"/></svg>
+      </button>
+      <button class="social-btn" onclick="window.open('https://instagram.com/', '_blank')" aria-label="Instagram">
+        <!-- Instagram - icono oficial -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><radialGradient id="IG-gradient" cx="0.5" cy="1" r="1.2"><stop offset="0%" stop-color="#f9ed32"/><stop offset="50%" stop-color="#ee2a7b"/><stop offset="100%" stop-color="#6228d7"/></radialGradient><rect width="32" height="32" rx="8" fill="url(#IG-gradient)"/><circle cx="16" cy="16" r="7" fill="#fff"/><circle cx="16" cy="16" r="5" fill="url(#IG-gradient)"/><circle cx="22" cy="10" r="1.5" fill="#fff"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Garcia Cargo | Transporte de materiales y escombro | Todos los derechos reservados
+  </footer>
+</body>
+</html>
