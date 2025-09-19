@@ -3,248 +3,692 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Transportes García Cargo</title>
+  <title>Transportes García Cargo - Tu Solución en Transporte</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #e9e9e9 0%, #b2bec3 100%);
       min-height: 100vh;
+      line-height: 1.6;
     }
+    
+    /* Animaciones */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Header mejorado */
     header {
-      background: #2d3436;
+      background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
       color: #fff;
-      padding: 1rem 0;
+      padding: 1.2rem 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .logo {
-      font-size: 2rem;
-      font-weight: bold;
+    
+    .logo-section {
       margin-left: 2rem;
-      letter-spacing: 2px;
+      animation: slideInLeft 1s ease-out;
     }
+    
+    .logo {
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #fdcb6e;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .eslogan {
+      font-size: 0.9rem;
+      color: #ddd;
+      font-style: italic;
+      margin-top: 0.2rem;
+      letter-spacing: 1px;
+    }
+    
     nav {
       margin-right: 2rem;
+      animation: slideInRight 1s ease-out;
     }
+    
     nav a {
       color: #fff;
       text-decoration: none;
       margin: 0 1rem;
       font-weight: 500;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      position: relative;
+      overflow: hidden;
     }
+    
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(253, 203, 110, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
     nav a:hover {
       color: #fdcb6e;
+      background: rgba(253, 203, 110, 0.1);
+      transform: translateY(-2px);
     }
+    
+    /* Hero mejorado con más dinamismo */
     .hero {
       background: 
-        linear-gradient(rgba(44,62,80,0.7), rgba(44,62,80,0.4)),
+        linear-gradient(45deg, rgba(44,62,80,0.8), rgba(44,62,80,0.4)),
         url('https://images.unsplash.com/photo-1509228627150-74c3c2c9b1e7?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
       color: #fff;
       text-align: center;
-      padding: 5rem 2rem 4rem 2rem;
+      padding: 6rem 2rem 5rem 2rem;
       position: relative;
+      overflow: hidden;
     }
-    .hero::after {
-      display: none;
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #fdcb6e10, #e1705510, #74b9ff10);
+      animation: pulse 4s ease-in-out infinite;
     }
+    
     .hero-content {
       position: relative;
       z-index: 2;
+      animation: fadeInUp 1.5s ease-out;
     }
+    
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 1rem;
       letter-spacing: 2px;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      background: linear-gradient(45deg, #fff, #fdcb6e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+    
     .hero p {
       font-size: 1.4rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
+    
+    /* Botones mejorados */
     .btn, .social-btn {
-      background: #fdcb6e;
-      color: #2d3436;
+      background: linear-gradient(45deg, #fdcb6e, #e17055);
+      color: #fff;
       border: none;
-      padding: 1rem 2.5rem;
+      padding: 1.2rem 3rem;
       font-size: 1.1rem;
-      border-radius: 30px;
+      border-radius: 50px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-      transition: background 0.2s, color 0.2s, transform 0.18s;
+      box-shadow: 0 6px 20px rgba(253, 203, 110, 0.4);
+      transition: all 0.3s ease;
       margin: 0.5rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
     }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
     .btn:hover, .social-btn:hover {
-      background: #e17055;
-      color: #fff;
-      transform: scale(1.09) translateY(-2px) rotate(-2deg);
-      box-shadow: 0 8px 24px rgba(44,62,80,0.20);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(253, 203, 110, 0.6);
     }
+    
+    .btn:active {
+      transform: translateY(-1px) scale(1.02);
+    }
+    
+    /* Servicios principales mejorados */
     section.services {
-      background: #fff;
-      padding: 3rem 2rem;
-      max-width: 1100px;
-      margin: -3rem auto 2rem auto;
-      border-radius: 18px;
-      box-shadow: 0 4px 20px rgba(44,62,80,0.07);
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: -4rem auto 3rem auto;
+      border-radius: 25px;
+      box-shadow: 0 10px 40px rgba(44,62,80,0.1);
       position: relative;
       z-index: 2;
+      animation: fadeInUp 1s ease-out 0.5s both;
     }
+    
     section.services h2 {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       color: #2d3436;
-      font-size: 2rem;
+      font-size: 2.5rem;
       letter-spacing: 1px;
+      position: relative;
     }
+    
+    section.services h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(45deg, #fdcb6e, #e17055);
+      border-radius: 2px;
+    }
+    
     .service-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
+      justify-items: center;
     }
+    
     .service-card {
-      background: #f1f2f6;
-      border-radius: 12px;
-      padding: 2rem 1.2rem;
-      width: 230px;
+      background: linear-gradient(135deg, #fff 0%, #f1f2f6 100%);
+      border-radius: 20px;
+      padding: 2.5rem 1.5rem;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(44,62,80,0.06);
-      transition: transform 0.15s;
+      box-shadow: 0 5px 25px rgba(44,62,80,0.08);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(253, 203, 110, 0.1);
+      position: relative;
+      overflow: hidden;
     }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(253, 203, 110, 0.05));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    
     .service-card:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 6px 20px rgba(44,62,80,0.10);
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(44,62,80,0.15);
+      border-color: #fdcb6e;
     }
+    
     .service-card img {
-      width: 60px;
-      margin-bottom: 1rem;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+      transition: transform 0.3s ease;
     }
+    
+    .service-card:hover img {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
     .service-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.7rem;
-      color: #636e72;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #2d3436;
+      font-weight: 600;
     }
+    
     .service-card p {
       font-size: 1rem;
       color: #636e72;
+      line-height: 1.6;
     }
-    /* Nueva sección: Servicios Transporte */
+    
+    /* Servicios detallados mejorados */
     .servicios-transporte {
-      background: #fdf6e3;
-      border-radius: 18px;
-      max-width: 1100px;
-      margin: 2rem auto 2rem auto;
-      box-shadow: 0 4px 20px rgba(44,62,80,0.07);
-      padding: 2.5rem 1.5rem;
+      background: linear-gradient(135deg, #fdf6e3 0%, #f8f4e6 100%);
+      border-radius: 25px;
+      max-width: 1200px;
+      margin: 3rem auto;
+      box-shadow: 0 10px 40px rgba(44,62,80,0.1);
+      padding: 3rem 2rem;
+      animation: fadeInUp 1s ease-out 1s both;
     }
+    
     .servicios-transporte h2 {
       color: #d35400;
-      margin-bottom: 1.2rem;
-      font-size: 1.7rem;
+      margin-bottom: 2rem;
+      font-size: 2rem;
       letter-spacing: 1px;
-      text-align: left;
+      text-align: center;
+      position: relative;
     }
-    .servicios-transporte h3 {
-      color: #2d3436;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      margin-top: 1.2rem;
+    
+    .servicios-transporte h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #d35400;
+      border-radius: 2px;
     }
+    
     .servicio, .modalidad {
-      margin-bottom: 1.3rem;
-      padding: 1rem 1.2rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 1px 8px rgba(44,62,80,0.04);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #fff 0%, #fefefe 100%);
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(44,62,80,0.06);
+      border-left: 5px solid #fdcb6e;
+      transition: all 0.3s ease;
     }
-    .servicio ul, .modalidad ul, .valor-agregado {
-      margin: 0.5rem 0 0.5rem 1.2rem;
-      padding-left: 1.2rem;
-      color: #636e72;
-      font-size: 1rem;
+    
+    .servicio:hover, .modalidad:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 30px rgba(44,62,80,0.1);
+      border-left-color: #e17055;
     }
+    
+    .servicio h3, .modalidad h3 {
+      color: #2d3436;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .icono-servicio {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+    
+    .servicio ul, .modalidad ul {
+      margin: 1rem 0;
+      padding-left: 2rem;
+      color: #555;
+    }
+    
+    .servicio li, .modalidad li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    
+    .servicio li::marker, .modalidad li::marker {
+      color: #fdcb6e;
+    }
+    
     .valor-agregado {
-      background: #e8f6e3;
-      border-radius: 12px;
-      padding: 1rem;
-      margin-top: 1.2rem;
-      margin-bottom: 0;
-      box-shadow: 0 1px 8px rgba(44,62,80,0.04);
+      background: linear-gradient(135deg, #e8f6e3 0%, #f0f8ec 100%);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 5px 20px rgba(44,62,80,0.06);
+      border: 1px solid #27ae60;
     }
+    
+    .valor-agregado li {
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+      color: #2d3436;
+    }
+    
+    /* Sección de contacto mejorada */
     section.contact-section {
       text-align: center;
-      padding: 2rem 1rem 2.5rem 1rem;
-      background: #fff;
-      border-radius: 18px;
-      max-width: 600px;
-      margin: 1.5rem auto 2rem auto;
-      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      border-radius: 25px;
+      max-width: 800px;
+      margin: 2rem auto;
+      box-shadow: 0 10px 40px rgba(44,62,80,0.1);
+      animation: fadeInUp 1s ease-out 1.5s both;
     }
+    
     .contact-section h2 {
       color: #2d3436;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      position: relative;
     }
+    
+    .contact-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(45deg, #fdcb6e, #e17055);
+      border-radius: 2px;
+    }
+    
     .contact-section p {
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
       color: #636e72;
     }
-    .contact-info {
-      background: #f1f2f6;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 2rem 0 1rem 0;
+    
+    /* Formulario de contacto */
+    .contact-form {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
       text-align: left;
-      box-shadow: 0 2px 6px rgba(44,62,80,0.05);
-      font-size: 1.08rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
       color: #2d3436;
+      font-weight: 500;
     }
-    .contact-info strong {
-      color: #636e72;
-      display: inline-block;
-      width: 130px;
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
     }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #fdcb6e;
+      box-shadow: 0 0 0 3px rgba(253, 203, 110, 0.1);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    .contact-info {
+      background: linear-gradient(135deg, #f1f2f6 0%, #e9ecef 100%);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: left;
+      box-shadow: 0 5px 15px rgba(44,62,80,0.08);
+    }
+    
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info-item:hover {
+      background: rgba(253, 203, 110, 0.1);
+      border-radius: 8px;
+    }
+    
+    .contact-info-item i {
+      width: 30px;
+      color: #fdcb6e;
+      margin-right: 1rem;
+    }
+    
+    .contact-info-item strong {
+      color: #2d3436;
+      margin-right: 1rem;
+      min-width: 100px;
+    }
+    
+    /* Redes sociales mejoradas */
     .social-buttons {
       display: flex;
       justify-content: center;
-      gap: 1.2rem;
-      margin: 1.5rem 0 0.5rem 0;
+      gap: 1rem;
+      margin: 2rem 0;
     }
-    .social-btn svg {
-      width: 26px;
-      height: 26px;
-      display: block;
+    
+    .social-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
+    
+    .social-btn.whatsapp {
+      background: linear-gradient(45deg, #25D366, #128C7E);
+    }
+    
+    .social-btn.facebook {
+      background: linear-gradient(45deg, #1877F2, #166FE5);
+    }
+    
+    .social-btn.instagram {
+      background: linear-gradient(45deg, #E4405F, #FFDC80, #F56040);
+    }
+    
+    .social-btn.email {
+      background: linear-gradient(45deg, #D44638, #B23121);
+    }
+    
+    .social-btn i {
+      font-size: 1.5rem;
+      color: white;
+      transition: transform 0.3s ease;
+    }
+    
+    .social-btn:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    
+    .social-btn:hover i {
+      transform: scale(1.2);
+    }
+    
+    /* Footer mejorado */
     footer {
-      background: #636e72;
+      background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
       color: #fff;
       text-align: center;
-      padding: 1.2rem 0;
+      padding: 2rem 0;
       font-size: 1rem;
       letter-spacing: 1px;
-      margin-top: 2rem;
+      margin-top: 3rem;
+      position: relative;
     }
-    @media (max-width: 900px) {
-      .service-list { flex-direction: column; align-items: center; }
-      .service-card { width: 90%; }
-      section.services, .servicios-transporte { margin: 0.5rem; padding: 2rem 0.5rem; }
-      .hero h1 { font-size: 2.1rem; }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #fdcb6e, #e17055, #fdcb6e);
     }
-    @media (max-width: 700px) {
-      .contact-section { padding: 1.2rem 0.5rem; }
-      .contact-info strong { width: 100px; }
+    
+    /* Responsividad mejorada */
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 1.8rem;
+      }
+      
+      .eslogan {
+        font-size: 0.8rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .service-list {
+        grid-template-columns: 1fr;
+      }
+      
+      section.services,
+      .servicios-transporte,
+      .contact-section {
+        margin: 1rem;
+        padding: 2rem 1rem;
+      }
+      
+      .btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-section {
+        margin-left: 1rem;
+      }
+      
+      .hero {
+        padding: 4rem 1rem 3rem 1rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .social-buttons {
+        flex-wrap: wrap;
+      }
+      
+      .social-btn {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    
+    /* Efectos adicionales */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Scroll smooth */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Loading animation */
+    .loading {
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    
+    /* Utilidades */
+    .text-gradient {
+      background: linear-gradient(45deg, #fdcb6e, #e17055);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">Garcia Cargo</div>
+    <div class="logo-section">
+      <div class="logo">García Cargo</div>
+      <div class="eslogan">Tu solución confiable en transporte</div>
+    </div>
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
@@ -254,142 +698,352 @@
 
   <section class="hero" id="inicio">
     <div class="hero-content">
-      <h1>Transporte de Materiales y Escombro</h1>
-      <p>Soluciones rápidas, seguras y confiables para tu obra o proyecto. Transportamos escombro, arena, grava, tierra y más.</p>
-      <button class="btn" onclick="window.location='#servicios'">Ver Servicios</button>
-      <button class="btn" onclick="window.location='#contacto'">Cotizar Ahora</button>
+      <h1 class="floating">Transporte de Materiales y Escombro</h1>
+      <p>Soluciones rápidas, seguras y confiables para tu obra o proyecto. Transportamos escombro, arena, grava, tierra y más con la mejor tecnología y servicio personalizado.</p>
+      <div>
+        <a href="#servicios" class="btn">
+          <i class="fas fa-truck"></i>
+          Ver Servicios
+        </a>
+        <a href="#contacto" class="btn">
+          <i class="fas fa-calculator"></i>
+          Cotizar Ahora
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="services" id="servicios">
+  <section class="services loading" id="servicios">
     <h2>Nuestros Servicios</h2>
     <div class="service-list">
       <div class="service-card">
         <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Escombro" />
         <h3>Transporte de Escombro</h3>
-        <p>Retiro eficiente de escombro y residuos de construcción, con camiones de diferentes capacidades.</p>
+        <p>Retiro eficiente de escombro y residuos de construcción, con camiones de diferentes capacidades y manejo especializado.</p>
       </div>
       <div class="service-card">
         <img src="https://cdn-icons-png.flaticon.com/512/616/616487.png" alt="Arena" />
         <h3>Entrega de Arena</h3>
-        <p>Suministro y transporte de arena fina y gruesa para todo tipo de obra.</p>
+        <p>Suministro y transporte de arena fina y gruesa de la mejor calidad para todo tipo de obra y construcción.</p>
       </div>
       <div class="service-card">
-        <img src="https://img.icons8.com/color/96/000000/gravel.png" alt="Grava">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616489.png" alt="Grava" />
         <h3>Transporte de Grava</h3>
-        <p>Grava de diferentes tamaños y calidades, entregada directo a tu ubicación.</p>
+        <p>Grava de diferentes tamaños y calidades, entregada directo a tu ubicación con puntualidad garantizada.</p>
       </div>
       <div class="service-card">
-        <img src="https://img.icons8.com/color/96/000000/soil.png" alt="Tierra">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616486.png" alt="Tierra" />
         <h3>Transporte de Tierra</h3>
-        <p>Movemos tierra para nivelación, relleno y jardinería, con camiones adaptados.</p>
+        <p>Movemos tierra para nivelación, relleno y jardinería, con camiones especializados y personal capacitado.</p>
       </div>
       <div class="service-card">
-        <img src="https://img.icons8.com/color/96/000000/truck.png" alt="Camiones">
+        <img src="https://cdn-icons-png.flaticon.com/512/3465/3465216.png" alt="Camiones" />
         <h3>Renta de Camiones</h3>
-        <p>Flota de camiones tipo volteo, torton y más. Servicio por viaje o por día.</p>
+        <p>Flota moderna de camiones tipo volteo, torton y más. Servicio flexible por viaje, por día o contratos largos.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2092/2092063.png" alt="Logística" />
+        <h3>Logística Integral</h3>
+        <p>Planificación completa de tu proyecto de transporte con seguimiento en tiempo real y asesoría especializada.</p>
       </div>
     </div>
   </section>
 
-  <!-- Integración de tu sección avanzada de servicios -->
-  <section class="servicios-transporte">
-    <h2>🚚 Servicios de Transporte y Recolección de Escombros</h2>
+  <section class="servicios-transporte loading">
+    <h2>🚚 Servicios Especializados de Transporte</h2>
 
     <article class="servicio">
-      <h3>🧱 1. Recolección de Escombros Limpios</h3>
+      <h3>
+        <img class="icono-servicio" src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Escombro limpio" />
+        Recolección de Escombros Limpios
+      </h3>
       <ul>
-        <li>Materiales: concreto, ladrillo, cerámica, piedra</li>
-        <li>✅ Ideal para reciclaje y reutilización</li>
-        <li>📍 Recolección directa en obra o domicilio</li>
-        <li>♻️ Opción de disposición sostenible</li>
+        <li>📦 Materiales: concreto, ladrillo, cerámica, piedra natural</li>
+        <li>✅ Clasificación para reciclaje y reutilización sostenible</li>
+        <li>📍 Recolección directa en obra, domicilio o punto acordado</li>
+        <li>♻️ Certificado de disposición final y gestión ambiental</li>
+        <li>⚡ Servicio express disponible 24/7</li>
       </ul>
     </article>
 
     <article class="servicio">
-      <h3>🧩 2. Recolección de Escombros Mezclados</h3>
+      <h3>
+        <img class="icono-servicio" src="https://cdn-icons-png.flaticon.com/512/616/616487.png" alt="Escombro mezclado" />
+        Recolección de Escombros Mezclados
+      </h3>
       <ul>
-        <li>Materiales: mezcla de inertes con madera, plástico, metales</li>
-        <li>🔍 Clasificación previa para tratamiento adecuado</li>
-        <li>🏗️ Contenedores para obras medianas y grandes</li>
-        <li>🛠️ Separación en planta si el cliente lo requiere</li>
+        <li>🔄 Materiales: mezcla de inertes con madera, plástico, metales</li>
+        <li>🔍 Clasificación especializada para tratamiento diferenciado</li>
+        <li>📦 Contenedores de 3, 6, 9 y 12 m³ para obras grandes</li>
+        <li>🛠️ Separación en planta con tecnología avanzada</li>
+        <li>📊 Reportes detallados de clasificación y disposición</li>
       </ul>
     </article>
 
     <article class="servicio">
-      <h3>☣️ 3. Manejo de Escombros Contaminados</h3>
+      <h3>
+        <img class="icono-servicio" src="https://cdn-icons-png.flaticon.com/512/616/616489.png" alt="Escombro contaminado" />
+        Manejo de Residuos Peligrosos
+      </h3>
       <ul>
-        <li>Materiales: pinturas, disolventes, amianto, residuos peligrosos</li>
-        <li>🧪 Recolección con protocolos de seguridad</li>
-        <li>🧤 Personal capacitado y certificado</li>
-        <li>🏥 Disposición en sitios autorizados</li>
+        <li>⚠️ Materiales: pinturas, disolventes, amianto, químicos</li>
+        <li>🧪 Protocolos de seguridad certificados internacionalmente</li>
+        <li>👷 Personal especializado con EPP certificado</li>
+        <li>🏥 Disposición en sitios autorizados por autoridades ambientales</li>
+        <li>📋 Documentación completa y trazabilidad total</li>
       </ul>
     </article>
 
     <h2>🏘️ Modalidades de Servicio</h2>
 
     <article class="modalidad">
-      <h3>📦 Recolección Domiciliaria</h3>
+      <h3>
+        <img class="icono-servicio" src="https://cdn-icons-png.flaticon.com/512/3465/3465216.png" alt="Domiciliaria" />
+        Recolección Residencial
+      </h3>
       <ul>
-        <li>Para remodelaciones pequeñas o limpiezas</li>
-        <li>🚛 Vehículos compactos para zonas residenciales</li>
-        <li>📅 Solicitud programada o express</li>
+        <li>🏠 Ideal para remodelaciones, limpiezas y renovaciones</li>
+        <li>🚛 Vehículos compactos especiales para zonas residenciales</li>
+        <li>📅 Programación flexible: inmediata, programada o recurrente</li>
+        <li>💰 Tarifas preferenciales para clientes frecuentes</li>
       </ul>
     </article>
 
     <article class="modalidad">
-      <h3>🏗️ Recolección Industrial / Obra</h3>
+      <h3>
+        <img class="icono-servicio" src="https://cdn-icons-png.flaticon.com/512/3465/3465216.png" alt="Industrial" />
+        Servicios Industriales y Comerciales
+      </h3>
       <ul>
-        <li>Grandes volúmenes en construcción o demolición</li>
-        <li>🛻 Camiones tipo volqueta y contenedores</li>
-        <li>📍 Servicio en sitio con logística personalizada</li>
+        <li>🏗️ Grandes volúmenes en construcción, demolición y minería</li>
+        <li>🛻 Flota de camiones volqueta, contenedores roll-off</li>
+        <li>📍 Servicio en sitio con coordinación logística avanzada</li>
+        <li>📈 Contratos corporativos con tarifas preferenciales</li>
       </ul>
     </article>
 
     <h2>📈 Valor Agregado</h2>
 
     <ul class="valor-agregado">
-      <li>📲 Seguimiento en tiempo real del servicio</li>
-      <li>🧾 Facturación digital y trazabilidad</li>
-      <li>🧠 Asesoría técnica para optimizar costos y tiempos</li>
-      <li>🌱 Compromiso ambiental con prácticas sostenibles</li>
+      <li>📲 Seguimiento GPS en tiempo real de todos los vehículos</li>
+      <li>🧾 Facturación electrónica y plataforma digital de gestión</li>
+      <li>🧠 Asesoría técnica especializada para optimización de costos</li>
+      <li>🌱 Certificación ambiental y prácticas 100% sostenibles</li>
+      <li>⚡ Servicio de emergencia 24/7 los 365 días del año</li>
+      <li>🛡️ Seguro de responsabilidad civil y cobertura total</li>
     </ul>
   </section>
-  <!-- Fin integración -->
 
-  <section class="contact-section" id="contacto">
-    <h2>¡Cotiza tu servicio!</h2>
-    <p>Solicita tu cotización rápida o contáctanos para más información.</p>
-    <button class="btn" onclick="window.location.href='mailto:contacto@garciacargo.com?subject=Cotización%20Transporte'">Correo Electrónico</button>
-    <button class="btn" onclick="window.open('https://wa.me/573202052830?text=Hola,%20quiero%20cotizar%20el%20transporte%20de%20materiales', '_blank')">
-      WhatsApp
-    </button>
-    <button class="btn" onclick="alert('¡Gracias por tu interés! Pronto te contactaremos.')">Solicitar Cotización</button>
+  <section class="contact-section loading" id="contacto">
+    <h2>¡Cotiza tu Servicio!</h2>
+    <p>Solicita tu cotización personalizada o contáctanos para más información. Respuesta garantizada en menos de 2 horas.</p>
+    
+    <!-- Formulario de Cotización -->
+    <form class="contact-form" onsubmit="enviarCotizacion(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nombre">Nombre Completo *</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono *</label>
+          <input type="tel" id="telefono" name="telefono" required>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Correo Electrónico</label>
+          <input type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="servicio">Tipo de Servicio *</label>
+          <select id="servicio" name="servicio" required>
+            <option value="">Selecciona un servicio</option>
+            <option value="transporte-escombro">Transporte de Escombro</option>
+            <option value="entrega-arena">Entrega de Arena</option>
+            <option value="transporte-grava">Transporte de Grava</option>
+            <option value="transporte-tierra">Transporte de Tierra</option>
+            <option value="renta-camiones">Renta de Camiones</option>
+            <option value="logistica-integral">Logística Integral</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="ubicacion">Ubicación del Servicio</label>
+        <input type="text" id="ubicacion" name="ubicacion" placeholder="Dirección o zona">
+      </div>
+      
+      <div class="form-group">
+        <label for="mensaje">Descripción del Proyecto</label>
+        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos más detalles sobre tu proyecto..."></textarea>
+      </div>
+      
+      <button type="submit" class="btn">
+        <i class="fas fa-paper-plane"></i>
+        Enviar Cotización
+      </button>
+    </form>
 
+    <!-- Información de Contacto -->
     <div class="contact-info">
-      <div><strong>Teléfono:</strong> 57 320 2052830</div>
-      <div><strong>Ubicación:</strong> Bogotá y Cundinamarca</div>
-      <div><strong>Horario:</strong> Atención 24 horas</div>
+      <div class="contact-info-item">
+        <i class="fas fa-phone"></i>
+        <strong>Teléfono:</strong> +57 320 205 28 30
+      </div>
+      <div class="contact-info-item">
+        <i class="fas fa-envelope"></i>
+        <strong>Email:</strong> contacto@garciacargo.com
+      </div>
+      <div class="contact-info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <strong>Ubicación:</strong> Bogotá y Cundinamarca
+      </div>
+      <div class="contact-info-item">
+        <i class="fas fa-clock"></i>
+        <strong>Horario:</strong> Atención 24 horas - 7 días
+      </div>
+      <div class="contact-info-item">
+        <i class="fas fa-shield-alt"></i>
+        <strong>Garantía:</strong> Servicio asegurado y certificado
+      </div>
     </div>
 
+    <!-- Redes Sociales con Iconos Originales -->
     <div class="social-buttons">
-      <button class="social-btn" onclick="window.open('https://wa.me/573202052830', '_blank')" aria-label="WhatsApp">
-        <!-- WhatsApp - icono oficial -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g><path fill="#25D366" d="M16 3C9.373 3 4 8.373 4 15c0 2.53.783 4.873 2.27 6.888L4 29l7.336-2.27A11.972 11.972 0 0016 27c6.627 0 12-5.373 12-12S22.627 3 16 3Zm0 22c-2.115 0-4.162-.656-5.891-1.89l-.42-.29-4.36 1.347 1.395-4.242-.273-.43A9.944 9.944 0 016 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10Zm5.172-7.065c-.277-.139-1.634-.806-1.887-.899-.253-.093-.437-.139-.62.139-.184.277-.713.899-.874 1.084-.161.184-.322.207-.599.069-.277-.139-1.172-.432-2.234-1.377-.825-.735-1.382-1.642-1.546-1.919-.161-.277-.017-.427.122-.565.126-.125.277-.322.416-.483.139-.161.184-.277.277-.461.092-.185.046-.347-.023-.486-.069-.139-.62-1.496-.85-2.048-.224-.54-.451-.466-.62-.476l-.527-.01c-.184 0-.482.069-.736.347s-.966.945-.966 2.305c0 1.359.99 2.674 1.127 2.862.138.184 1.951 2.99 4.732 4.065.662.285 1.178.455 1.582.582.664.212 1.268.182 1.745.111.532-.079 1.634-.667 1.865-1.311.23-.644.23-1.196.161-1.311-.069-.115-.253-.184-.53-.323Z"/></g></svg>
+      <button class="social-btn whatsapp" onclick="window.open('https://wa.me/573202052830?text=Hola%20García%20Cargo,%20quiero%20cotizar%20un%20servicio%20de%20transporte', '_blank')" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
       </button>
-      <button class="social-btn" onclick="window.open('https://facebook.com/', '_blank')" aria-label="Facebook">
-        <!-- Facebook - icono oficial -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="#1877F3" d="M16 2C8.268 2 2 8.268 2 16c0 7.012 5.158 12.818 11.785 13.813V20.59h-3.548v-4.59h3.548v-3.5c0-3.51 2.145-5.438 5.322-5.438 1.543 0 3.155.277 3.155.277v3.467h-1.777c-1.752 0-2.298 1.088-2.298 2.205v2.989h3.91l-.625 4.59h-3.285v9.223C26.842 28.818 32 23.012 32 16c0-7.732-6.268-14-14-14Z"/><path fill="#fff" d="M22.09 24.18l.625-4.59h-3.91v-2.989c0-1.117.546-2.205 2.298-2.205h1.777v-3.467s-1.612-.277-3.155-.277c-3.177 0-5.322 1.928-5.322 5.438v3.5h-3.548v4.59h3.548v9.223C5.158 28.818 1 23.012 1 16c0-7.732 6.268-14 14-14s14 6.268 14 14c0 7.012-5.158 12.818-11.785 13.813V24.18h3.285Z"/></svg>
+      <button class="social-btn email" onclick="window.location.href='mailto:contacto@garciacargo.com?subject=Cotización%20Transporte%20García%20Cargo&body=Hola,%20estoy%20interesado%20en%20sus%20servicios%20de%20transporte.'" aria-label="Email">
+        <i class="fas fa-envelope"></i>
       </button>
-      <button class="social-btn" onclick="window.open('https://instagram.com/', '_blank')" aria-label="Instagram">
-        <!-- Instagram - icono oficial -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><radialGradient id="IG-gradient" cx="0.5" cy="1" r="1.2"><stop offset="0%" stop-color="#f9ed32"/><stop offset="50%" stop-color="#ee2a7b"/><stop offset="100%" stop-color="#6228d7"/></radialGradient><rect width="32" height="32" rx="8" fill="url(#IG-gradient)"/><circle cx="16" cy="16" r="7" fill="#fff"/><circle cx="16" cy="16" r="5" fill="url(#IG-gradient)"/><circle cx="22" cy="10" r="1.5" fill="#fff"/></svg>
+      <button class="social-btn facebook" onclick="window.open('https://facebook.com/garciacargo', '_blank')" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+      <button class="social-btn instagram" onclick="window.open('https://instagram.com/garciacargo', '_blank')" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </button>
+    </div>
+
+    <!-- Botones de Acción Rápida -->
+    <div style="margin-top: 2rem;">
+      <a href="tel:+573202052830" class="btn">
+        <i class="fas fa-phone"></i>
+        Llamar Ahora
+      </a>
+      <button class="btn" onclick="solicitarCotizacionRapida()" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+        <i class="fas fa-rocket"></i>
+        Cotización Express
       </button>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Garcia Cargo | Transporte de materiales y escombro | Todos los derechos reservados
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+      <p>&copy; 2025 García Cargo | Transporte Especializado de Materiales y Escombro</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">
+        Todos los derechos reservados | Licencia de Transporte #12345 | RUNT Certificado
+      </p>
+    </div>
   </footer>
+
+  <script>
+    // Función para enviar cotización
+    function enviarCotizacion(event) {
+      event.preventDefault();
+      
+      const formData = new FormData(event.target);
+      const nombre = formData.get('nombre');
+      const telefono = formData.get('telefono');
+      const email = formData.get('email');
+      const servicio = formData.get('servicio');
+      const ubicacion = formData.get('ubicacion');
+      const mensaje = formData.get('mensaje');
+      
+      // Crear mensaje para WhatsApp
+      const whatsappMessage = `Hola García Cargo, solicito cotización:
+📝 Nombre: ${nombre}
+📞 Teléfono: ${telefono}
+📧 Email: ${email}
+🚚 Servicio: ${servicio}
+📍 Ubicación: ${ubicacion}
+💬 Detalles: ${mensaje}`;
+      
+      const whatsappUrl = `https://wa.me/573202052830?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      // Mostrar mensaje de confirmación
+      alert('¡Cotización enviada! Te contactaremos pronto.');
+      event.target.reset();
+    }
+    
+    // Función para cotización rápida
+    function solicitarCotizacionRapida() {
+      const mensaje = `Hola García Cargo, necesito una cotización express para un servicio de transporte. Por favor contactarme lo antes posible.`;
+      const whatsappUrl = `https://wa.me/573202052830?text=${encodeURIComponent(mensaje)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+    
+    // Animaciones on scroll
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+    
+    function handleScrollAnimations() {
+      const loadingElements = document.querySelectorAll('.loading');
+      loadingElements.forEach(el => {
+        if (isElementInViewport(el)) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    }
+    
+    // Event listeners
+    window.addEventListener('scroll', handleScrollAnimations);
+    window.addEventListener('load', () => {
+      // Inicializar animaciones
+      handleScrollAnimations();
+      
+      // Smooth scroll para navegación
+      document.querySelectorAll('nav a, .btn').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }
+        });
+      });
+    });
+    
+    // Efecto parallax suave en el hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+    
+    // Validación del formulario
+    document.getElementById('telefono').addEventListener('input', function(e) {
+      // Solo números y algunos caracteres especiales
+      this.value = this.value.replace(/[^0-9+\-\s()]/g, '');
+    });
+  </script>
 </body>
 </html>
