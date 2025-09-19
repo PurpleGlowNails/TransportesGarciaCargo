@@ -972,31 +972,44 @@
       const ubicacion = formData.get('ubicacion');
       const mensaje = formData.get('mensaje');
       
-      // Crear mensaje profesional para WhatsApp
+      // Crear mensaje profesional para WhatsApp con emojis compatibles
       const fechaActual = new Date().toLocaleDateString('es-CO');
       const horaActual = new Date().toLocaleTimeString('es-CO', {hour: '2-digit', minute: '2-digit'});
       
-      const whatsappMessage = `🚚 *NUEVA COTIZACIÓN - GARCÍA CARGO*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      // Convertir tipo de servicio a texto legible
+      const serviciosMap = {
+        'transporte-escombro': 'Transporte de Escombro',
+        'entrega-arena': 'Entrega de Arena', 
+        'transporte-grava': 'Transporte de Grava',
+        'transporte-tierra': 'Transporte de Tierra',
+        'renta-camiones': 'Renta de Camiones',
+        'logistica-integral': 'Logística Integral'
+      };
+      
+      const servicioTexto = serviciosMap[servicio] || servicio;
+      
+      const whatsappMessage = `🚛 *NUEVA COTIZACIÓN GARCÍA CARGO*
+═══════════════════════════════
 
 📅 *Fecha:* ${fechaActual}
-⏰ *Hora:* ${horaActual}
+🕐 *Hora:* ${horaActual}
 
-👤 *DATOS DEL CLIENTE:*
-▫️ *Nombre:* ${nombre}
-▫️ *Teléfono:* ${telefono}
-▫️ *Email:* ${email || 'No proporcionado'}
+👤 *INFORMACIÓN DEL CLIENTE*
+🏷️ *Nombre:* ${nombre}
+📞 *Teléfono:* ${telefono}
+📧 *Email:* ${email || 'No proporcionado'}
 
-🚛 *SERVICIO SOLICITADO:*
-▫️ *Tipo:* ${servicio}
-▫️ *Ubicación:* ${ubicacion || 'No especificada'}
+🚚 *SERVICIO REQUERIDO*
+🔧 *Tipo:* ${servicioTexto}
+📍 *Ubicación:* ${ubicacion || 'No especificada'}
 
-💬 *DETALLES DEL PROYECTO:*
+💭 *DESCRIPCIÓN DEL PROYECTO*
 ${mensaje || 'Sin detalles adicionales'}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ Mensaje enviado desde garciacargo.com
-🕐 Responder lo antes posible`;
+═══════════════════════════════
+✅ *Solicitud desde garciacargo.com*
+⚡ *Favor responder pronto*
+🌟 *Cliente esperando cotización*`;
 
       // NÚMERO DE WHATSAPP PARA RECIBIR COTIZACIONES
       const numeroWhatsApp = '573118512190'; // Tu número personal
@@ -1058,18 +1071,20 @@ ${mensaje || 'Sin detalles adicionales'}
       const fechaActual = new Date().toLocaleDateString('es-CO');
       const horaActual = new Date().toLocaleTimeString('es-CO', {hour: '2-digit', minute: '2-digit'});
       
-      const mensaje = `🚀 *COTIZACIÓN EXPRESS - GARCÍA CARGO*
+      const mensaje = `🚀 *COTIZACIÓN EXPRESS GARCÍA CARGO*
+═══════════════════════════════
 
 📅 *Fecha:* ${fechaActual}
-⏰ *Hora:* ${horaActual}
+🕐 *Hora:* ${horaActual}
 
-💨 *SOLICITUD URGENTE*
-Hola García Cargo, necesito una cotización express para un servicio de transporte. 
+⚡ *SOLICITUD URGENTE*
+Hola García Cargo, necesito una cotización express para un servicio de transporte.
 
-Por favor contactarme lo antes posible.
+🆘 Por favor contactarme lo antes posible.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ Solicitud desde garciacargo.com`;
+═══════════════════════════════
+✅ *Solicitud Express desde garciacargo.com*
+🏃‍♂️ *Requiere atención inmediata*`;
       
       const numeroWhatsApp = '573118512190'; // Tu número personal
       const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
@@ -1086,22 +1101,34 @@ Por favor contactarme lo antes posible.
       switch(tipo) {
         case 'general':
           mensaje = `👋 *Hola García Cargo*
+═══════════════════════════════
 
-📅 ${fechaActual} - ⏰ ${horaActual}
+📅 ${fechaActual} - 🕐 ${horaActual}
 
-Estoy interesado en sus servicios de transporte. ¿Podrían proporcionarme más información?
+🚛 Estoy interesado en sus servicios de transporte. 
 
-Gracias.`;
+❓ ¿Podrían proporcionarme más información?
+
+🙏 Gracias por su atención.
+
+═══════════════════════════════
+✅ *Contacto desde garciacargo.com*`;
           break;
           
         case 'emergencia':
-          mensaje = `🚨 *SERVICIO URGENTE - GARCÍA CARGO*
+          mensaje = `🆘 *SERVICIO URGENTE GARCÍA CARGO*
+═══════════════════════════════
 
-📅 ${fechaActual} - ⏰ ${horaActual}
+📅 ${fechaActual} - 🕐 ${horaActual}
 
-Necesito un servicio de transporte de forma urgente. 
+⚡ Necesito un servicio de transporte de forma URGENTE.
 
-Por favor contactarme inmediatamente.`;
+📞 Por favor contactarme INMEDIATAMENTE.
+
+🚨 Es una emergencia.
+
+═══════════════════════════════
+🔥 *Solicitud URGENTE desde garciacargo.com*`;
           break;
       }
       
